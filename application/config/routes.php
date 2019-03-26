@@ -13,4 +13,9 @@ return [
         'action' => 'show',
     ],
 
+    'account/register' => [
+        'controller' => 'account',
+        'action' => 'register',
+    ],
+
 ];

@@ -27,7 +27,7 @@ class Router {
     public function math() {
         $url = trim($_SERVER['REQUEST_URI'], '/');  
         foreach ($this->routes as $route => $params) {
-            // если сработало true иначе false
+            // true or false
             if (preg_match($route, $url, $matches)) {
                 $this->params = $params;
                 return true;
@@ -39,11 +39,17 @@ class Router {
     // start route
     public function run() {
         if ($this->math()) {
-            $controller = 'application\controllers\\'.ucfirst($this->params['controller']).'Controller.php';
-            if (class_exists($controller)) {
-                echo 'Ок';
+            $path = 'application\controllers\\'.ucfirst($this->params['controller']).'Controller';
+            if (class_exists($path)) {
+                $action = $this->params['action'].'Action';
+                if (method_exists($path, $action)) {
+                    $controller = new $path;
+                    $controller->$action();
+                } else {
+                    echo 'Action не найден..'.$action;
+                }
             } else { 
-                echo 'Не найден '.$controller;
+                echo 'Controller не найден '.$path;
             }
             // echo $controller;
         } else {
