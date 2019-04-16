@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?php echo $title; ?></title>
 </head>
-<body style="background: black;">
+<body style="background: black; color: red;">
 
     <?php echo $content; ?>
 

@@ -3,6 +3,8 @@
 // class location in the file system
 namespace application\core;
 
+use application\core\View;
+
 class Router {
 
     protected $routes = [];
@@ -46,14 +48,14 @@ class Router {
                     $controller = new $path($this->params);
                     $controller->$action();
                 } else {
-                    echo 'Action не найден..'.$action;
+                    View::errorCode(404);
                 }
             } else { 
-                echo 'Controller не найден '.$path;
+                View::errorCode(404);
             }
             // echo $controller;
         } else {
-            echo 'Маршрут не найден';
+            View::errorCode(404);
         }
     }
 
