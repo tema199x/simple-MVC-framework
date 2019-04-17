@@ -11,8 +11,12 @@ class MainController extends Controller {
 
         $db = new Db;
 
-        $this->view->render('Главная');
+        // $form = 
 
+        $data = $db->row('SELECT name FROM users WHERE id = 2');
+        debug($data);
+        
+        $this->view->render('Главная');
     }
 
 } 
