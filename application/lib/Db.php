@@ -29,6 +29,7 @@ class Db {
         return $stmt;
     }
 
+    //список столюцов из бд в виде массива
     public function row($sql, $params = []) {
         $result = $this->query($sql, $params);
         return $result->fetchAll(PDO::FETCH_ASSOC);
